@@ -6,9 +6,7 @@
       </h1>
     </div>
     <div class="home-button">
-
-      <button class="btn btn-dark" type="submit">Vaata</button>
-
+      <router-link to="/location"><button class="btn btn-dark" type="submit">Vaata</button></router-link>
     </div>
     <div class="home-text">
       <p>SeeneKaart on platvorm Eesti headest seene leiukohtadest.</p>
