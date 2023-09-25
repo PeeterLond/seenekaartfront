@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
 }
@@ -29,3 +30,17 @@ main {
     border: 1px solid black;
 }
 
+.location-master {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+#map {
+    height: 60vh;
+    width: 40vw;
+}
