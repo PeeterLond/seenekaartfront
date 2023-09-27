@@ -55,3 +55,39 @@ main {
     height: 60vh;
     width: 40vw;
 }
+
+.icons {
+    margin-left: .5vw;
+    cursor: pointer;
+}
+
+.modal-dialog {
+    max-width: 27%;
+}
+
+.my-modal-footer {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+#title,
+#long,
+#lat {
+    margin-left: 5%;
+    width: 112%;
+}
+
+#textarea {
+    margin-top: 5%;
+}
+
+.table-title {
+    cursor: pointer;
+}
+
+.alert-master {
+    display: flex;
+    justify-content: center;
+}
+
