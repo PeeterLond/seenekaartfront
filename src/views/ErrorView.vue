@@ -1,6 +1,6 @@
 <template>
 
-  <h1>Nüüd läks küll midagi katki :(</h1>
+  <h1 class="errorMessage">Nüüd läks küll midagi katki :(</h1>
 
 
 </template>

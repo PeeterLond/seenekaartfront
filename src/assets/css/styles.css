@@ -116,3 +116,8 @@ main {
     display: flex;
     justify-content: center;
 }
+
+.errorMessage {
+    color: white;
+    font-family: "Roboto Light", serif;
+}
