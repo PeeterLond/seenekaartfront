@@ -4,21 +4,23 @@
   <div class="location-master">
     <div class="location-info">
       <div class="location-table">
-        <table class="table table-hover table-striped table-bordered">
+        <table v-if="locationsExist" class="table table-hover table-striped table-bordered">
           <tbody>
           <tr v-for="location in locationResponse">
             <td @click="zoomInToLocationOnMap(location)" class="table-title">{{ location.properties.title }}</td>
-            <td>
+            <td class="icons-td">
               <i @click="openEditLocationModal(location)" class="fa-regular fa-pen-to-square icons"></i>
               <i @click="openDeleteModal(location)" class="fa-solid fa-trash icons"></i>
             </td>
           </tr>
           </tbody>
         </table>
-
+        <div v-else>
+          <AlertDanger :alert-message="errorResponse.message"></AlertDanger>
+        </div>
       </div>
       <div class="location-table-button">
-        <button @click="openLocationModal(0)" class="btn btn-dark" type="submit">Lisa asukoht</button>
+        <button @click="openLocationModal(0)" class="btn btn-dark btn-lg" type="submit">Lisa asukoht</button>
       </div>
     </div>
     <div class="location-map">
@@ -26,23 +28,22 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
 
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import mushroomIcon from "@/assets/image/mushroom-icon.png"
 import {Icon} from 'leaflet'
 import router from "@/router";
 import DeleteModal from "@/components/modal/DeleteModal.vue";
 import LocationModal from "@/components/modal/LocationModal.vue";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
 
 export default {
   name: 'LocationView',
-  components: {LocationModal, DeleteModal},
+  components: {AlertDanger, LocationModal, DeleteModal},
   data() {
     return {
       locationResponse: [
@@ -61,7 +62,12 @@ export default {
             description: ''
           }
         }
-      ]
+      ],
+      errorResponse: {
+        message: '',
+        errorCode: 0
+      },
+      locationsExist: true,
     }
   },
   methods: {
@@ -106,13 +112,18 @@ export default {
     },
 
     getAllLocations() {
+      this.setUpMap()
       this.$http.get("/location")
           .then(response => {
             this.locationResponse = response.data
-            this.setUpMap()
+            this.addLocationsToMap()
           })
           .catch(error => {
-            router.push({name: 'errorRoute'})
+            this.errorResponse = error.response.data
+            this.locationsExist = false
+            if (this.errorResponse.errorCode !== 111) {
+              router.push({name: 'errorRoute'});
+            }
           })
     },
 
@@ -124,7 +135,6 @@ export default {
           .setContent(`<p>Vajutasid asukohta koordinaatidega: ${e.latlng.toString()}</p>
                        <button class="btn btn-dark" type="submit" id="popupButton">Lisa asukoht</button>`)
           .openOn(this.map)
-
 
       const popupButton = popup._contentNode.querySelector('#popupButton')
 
@@ -141,7 +151,11 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(this.map);
 
-      const myIcon = new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})
+      this.map.on('click', this.onMapClick)
+    },
+
+    addLocationsToMap() {
+      const myIcon = new Icon({iconUrl: mushroomIcon, iconSize: [20, 30], iconAnchor: [10, 30]})
 
       for (const feature of this.locationResponse) {
         let long = feature.geometry.coordinates[0];
@@ -149,11 +163,9 @@ export default {
         let marker = L.marker([long, lat], {icon: myIcon}).addTo(this.map)
         marker.bindPopup(feature.properties.description)
       }
-
-      this.map.on('click', this.onMapClick)
-    }
+    },
   },
-  beforeMount() {
+  mounted() {
     this.getAllLocations()
   }
 }

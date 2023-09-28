@@ -9,7 +9,7 @@
           <table>
             <tr>
               <td><label for="title"><sup style="color: red">*</sup> Pealkiri</label></td>
-              <td><input v-model="title" type="text" id="title"></td>
+              <td><input v-model="title" type="text" id="title" maxlength="30"></td>
             </tr>
             <tr>
               <td><label for="long"><sup style="color: red">*</sup> Pikkuskraad</label></td>
@@ -86,7 +86,7 @@ export default defineComponent({
     },
 
     coordinatesAreInEstonia() {
-      return this.longitude < 57.50 && this.longitude < 59.70 || this.latitude > 21.70 && this.latitude < 28.21
+      return (this.longitude > 57.50 && this.longitude < 59.70) && (this.latitude > 21.70 && this.latitude < 28.21)
     },
 
     fillRequestFields() {
@@ -111,7 +111,7 @@ export default defineComponent({
       if (!this.mandatoryFieldsAreFilled()) {
         this.errorMessage = 'Täida kõik väljad';
       } else if (!this.coordinatesAreInEstonia()) {
-        this.errorMessage = 'Asukoht võiks ikkagi Eesti piiridesse jääda :)'
+        this.errorMessage = 'Asukoht võiks ikkagi Eesti lähiümbrusesse jääda :)'
       } else {
         this.fillRequestFields();
         this.addLocation();

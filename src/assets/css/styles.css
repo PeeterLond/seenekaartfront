@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
 }
@@ -7,10 +6,12 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-image: url("@/assets/image/background.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 header {
-    border: 1px solid black;
     display: flex;
     height: 10vh;
     justify-content: center;
@@ -18,6 +19,8 @@ header {
 }
 header h2{
     cursor: pointer;
+    color: white;
+    font-family: "Roboto Light", serif;
 }
 
 main {
@@ -31,7 +34,20 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    border: 1px solid black;
+}
+
+.home-header h1 {
+    color: white;
+    font-family: "Roboto Light", serif;
+}
+
+.home-text {
+    width: 60%;
+}
+
+.home-text p {
+    color: white;
+    font-family: "Roboto Light", serif;
 }
 
 .location-master {
@@ -50,6 +66,15 @@ main {
     align-items: center;
 }
 
+.location-table {
+    width: 20vw;
+    height: 40%;
+    overflow: auto;
+}
+
+.table-title {
+    cursor: pointer;
+}
 
 #map {
     height: 60vh;
@@ -59,6 +84,10 @@ main {
 .icons {
     margin-left: .5vw;
     cursor: pointer;
+}
+
+.icons-td {
+    width: 5vw;
 }
 
 .modal-dialog {
@@ -80,10 +109,6 @@ main {
 
 #textarea {
     margin-top: 5%;
-}
-
-.table-title {
-    cursor: pointer;
 }
 
 .alert-master {
