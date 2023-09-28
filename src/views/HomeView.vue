@@ -6,7 +6,9 @@
       </h1>
     </div>
     <div class="home-button">
-      <router-link to="/location"><button class="btn btn-dark btn-lg" type="submit">Vaata</button></router-link>
+      <router-link to="/location">
+        <button class="btn btn-dark btn-lg" type="submit">Vaata</button>
+      </router-link>
     </div>
     <div class="home-text">
       <p>Kas olete valmis avastama Eesti salapäraseid metsi ja nende varjatud aardeid?

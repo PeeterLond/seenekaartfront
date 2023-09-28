@@ -14,13 +14,11 @@
 import {defineComponent} from "vue";
 import router from "@/router";
 
-export default defineComponent( {
+export default defineComponent({
   methods: {
     goToHome() {
       router.push({name: 'homeRoute'})
     },
   }
-
-
 })
 </script>

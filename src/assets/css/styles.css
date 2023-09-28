@@ -17,7 +17,8 @@ header {
     justify-content: center;
     align-items: center;
 }
-header h2{
+
+header h2 {
     cursor: pointer;
     color: white;
     font-family: "Roboto Light", serif;
@@ -115,4 +116,3 @@ main {
     display: flex;
     justify-content: center;
 }
-

@@ -82,12 +82,22 @@ export default {
       this.$refs.locationModal.$refs.modalRef.openModal()
     },
 
+    resetModalErrorMessage() {
+      this.$refs.locationModal.errorMessage = ''
+    },
+
     fillLocationModalFields(location) {
       this.$refs.locationModal.locationRequest = location
       this.$refs.locationModal.longitude = location.geometry.coordinates[0]
       this.$refs.locationModal.latitude = location.geometry.coordinates[1]
       this.$refs.locationModal.title = location.properties.title
       this.$refs.locationModal.description = location.properties.description
+    },
+
+    openDeleteModal(location) {
+      this.$refs.deleteModal.locationId = location.properties.locationId
+      this.$refs.deleteModal.coordinateId = location.properties.coordinateId
+      this.$refs.deleteModal.$refs.modalRef.openModal()
     },
 
     openLocationModal(latLng) {
@@ -99,16 +109,6 @@ export default {
         this.$refs.locationModal.latitude = latLng.lng.toFixed(6)
       }
       this.$refs.locationModal.$refs.modalRef.openModal()
-    },
-
-    resetModalErrorMessage: function () {
-      this.$refs.locationModal.errorMessage = ''
-    },
-
-    openDeleteModal(location) {
-      this.$refs.deleteModal.locationId = location.properties.locationId
-      this.$refs.deleteModal.coordinateId = location.properties.coordinateId
-      this.$refs.deleteModal.$refs.modalRef.openModal()
     },
 
     getAllLocations() {

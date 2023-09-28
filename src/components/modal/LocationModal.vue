@@ -21,7 +21,7 @@
             </tr>
           </table>
           <textarea v-model="description"
-                    placeholder="Asukoha kirjeldus" name="" id="textarea" cols="40" rows="4"></textarea>
+                    placeholder="Asukoha kirjeldus" id="textarea" cols="40" rows="4"></textarea>
     </template>
     <template #footer>
       <div class="my-modal-footer">
@@ -118,13 +118,6 @@ export default defineComponent({
       }
     },
 
-    resetAllFields() {
-      this.longitude = 0
-      this.latitude = 0
-      this.title = ''
-      this.description = ''
-    },
-
     addLocation() {
       this.$http.post("/location", this.locationRequest
       ).then(response => {
@@ -137,6 +130,13 @@ export default defineComponent({
 
     closeModal() {
       this.$refs.modalRef.closeModal()
+    },
+
+    resetAllFields() {
+      this.longitude = 0
+      this.latitude = 0
+      this.title = ''
+      this.description = ''
     },
   }
 })
