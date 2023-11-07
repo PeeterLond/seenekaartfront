@@ -19,6 +19,8 @@ or with IDE:
 4) Npm install and npm run serve from README.md
 5) Access the server from URL: http://localhost:8081/
 
+The PostgreSQL scripts to create the database tables are in the back-end server file under database/create.sql
+
 ### Project setup
 ```
 npm install
