@@ -13,7 +13,7 @@
     <div class="home-text">
       <p>Kas olete valmis avastama Eesti salapäraseid metsi ja nende varjatud aardeid?
         Meie veebileht pakub teile võimalust jagada ja leida parimaid seenekorjamise kohti üle kogu riigi.
-        Lisage oma lemmikseente asukohad kaardile ja ja avastage uusi seiklusi Eesti looduses.
+        Lisage oma lemmikseente asukohad kaardile ja avastage uusi seiklusi Eesti looduses.
       </p>
     </div>
   </div>

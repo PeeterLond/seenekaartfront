@@ -22,6 +22,7 @@ header h2 {
     cursor: pointer;
     color: white;
     font-family: "Roboto Light", serif;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 main {
@@ -40,10 +41,12 @@ main {
 .home-header h1 {
     color: white;
     font-family: "Roboto Light", serif;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .home-text {
     width: 60%;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .home-text p {

@@ -12,12 +12,12 @@
               <td><input v-model="title" type="text" id="title" maxlength="30"></td>
             </tr>
             <tr>
-              <td><label for="long"><sup style="color: red">*</sup> Pikkuskraad</label></td>
-              <td><input v-model="longitude" type="text" id="long"></td>
-            </tr>
-            <tr>
               <td><label for="lat"><sup style="color: red">*</sup> Laiuskraad</label></td>
               <td><input v-model="latitude" type="text" id="lat"></td>
+            </tr>
+            <tr>
+              <td><label for="long"><sup style="color: red">*</sup> Pikkuskraad</label></td>
+              <td><input v-model="longitude" type="text" id="long"></td>
             </tr>
           </table>
           <textarea v-model="description"
@@ -49,8 +49,8 @@ export default defineComponent({
   data() {
     return {
       isEdit: false,
-      longitude: 0,
       latitude: 0,
+      longitude: 0,
       title: '',
       description: '',
       errorMessage: '',
@@ -86,7 +86,7 @@ export default defineComponent({
     },
 
     coordinatesAreInEstonia() {
-      return (this.longitude > 57.50 && this.longitude < 59.70) && (this.latitude > 21.70 && this.latitude < 28.21)
+      return (this.latitude > 57.50 && this.latitude < 59.70) && (this.longitude > 21.70 && this.longitude < 28.21)
     },
 
     fillRequestFields() {

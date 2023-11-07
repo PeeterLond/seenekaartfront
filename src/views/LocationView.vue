@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     zoomInToLocationOnMap(location) {
-      this.map.setView([location.geometry.coordinates[0], location.geometry.coordinates[1]], 10)
+      this.map.setView([location.geometry.coordinates[1], location.geometry.coordinates[0]], 10)
     },
 
     openEditLocationModal(location) {
@@ -105,8 +105,8 @@ export default {
       this.$refs.locationModal.isEdit = false
       this.$refs.locationModal.resetAllFields()
       if (latLng !== 0) {
-        this.$refs.locationModal.longitude = latLng.lat.toFixed(6)
-        this.$refs.locationModal.latitude = latLng.lng.toFixed(6)
+        this.$refs.locationModal.latitude = latLng.lat.toFixed(6)
+        this.$refs.locationModal.longitude = latLng.lng.toFixed(6)
       }
       this.$refs.locationModal.$refs.modalRef.openModal()
     },
@@ -160,7 +160,7 @@ export default {
       for (const feature of this.locationResponse) {
         let long = feature.geometry.coordinates[0];
         let lat = feature.geometry.coordinates[1];
-        let marker = L.marker([long, lat], {icon: myIcon}).addTo(this.map)
+        let marker = L.marker([lat, long], {icon: myIcon}).addTo(this.map)
         marker.bindPopup(feature.properties.description)
       }
     },
